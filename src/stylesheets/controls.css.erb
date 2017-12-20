@@ -1,3 +1,4 @@
+
 #classic_controls {
   font-size: 0.72em;
   overflow: auto;
@@ -17,38 +18,90 @@
   border-collapse: separate;
   border-spacing: 0px 0px;
 }
+
 #classic_controls table tr:hover td.name {
   font-weight: bold;
   background-image: url("/assets/images/oneblackpixel.png");
 }
+
+#classic_controls table tr:hover a.choiceLink {
+  color:#000;
+}
+
+#classic_controls table tr:hover td.choice2 {
+  display:block;
+}
+
+/*
+#classic_controls table tr td a.leverNameLink {
+
+}
+*/
+
+
+#classic_controls table td.choice2 {
+  width: 20px;
+  padding-left:4px;
+  display:none;
+}
+
 #classic_controls table td.choice {
   width: 20px;
+  height: 15px;
 }
+
 #classic_controls table td.choice a {
   display: block;
   width: 100%;
   text-align: center;
-  color: #888;
+  vertical-align: bottom;
+  position: relative;
+  color: #FFF;
   text-decoration: none;
-  border: solid #ccc 1px;
+  height: 16px;
 }
-#classic_controls table td.choice a:hover {
-  border: solid #000 1px;
-}
+
+/*
 #classic_controls table td.choice a.selected {
   color: #000;
 }
+*/
+
 #classic_controls table td.name {
   background-image: url("/assets/images/onegreypixel.png");
   background-position: left center;
   background-repeat: repeat-x;
+  width:160px;
 }
+
+#classic_controls table td.nameL2 {
+  background-image: url("/assets/images/onegreypixel.png");
+  background-position: left center;
+  background-repeat: repeat-x;
+  width:150px !important;
+}
+
 #classic_controls table td.name a {
   background-color: #fff;
   text-decoration: none;
   color: #000;
   cursor: help;
 }
+
+#classic_controls table tr.menuWidth {
+		  width:260px;
+		  height:0px;
+}
+
+#classic_controls table tr.menuWidthL2 {
+		  width:250px;
+		  height:0px;
+}
+
+#classic_controls table tr td.menuLevelWidth {
+		  width:20px;
+}
+
 #classic_controls table td.name a:hover {
   text-decoration: underline;
 }
@@ -63,6 +116,10 @@
 }
 #classic_controls table td.help, #classic_controls div.help {
   width: 14px;
+}
+
+#classic_controls a.accordion-toggle  {
+color:#000; text-decoration: none;
 }
 
 #classic_controls table tr.incremental a {
@@ -110,4 +167,3 @@
 #classic_controls table tr.alternative a.selected {
   background-color: #aaa;
 }
-

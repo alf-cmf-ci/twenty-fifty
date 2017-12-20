@@ -23,14 +23,32 @@
   // This is the first thing that gets called when everything has been loaded.
   // It wires up the controls, sets up the initial view and loads the first
   // pathway.
-  $(document).ready( function() {
-    checkSVGWorks();
-    setUpControls();
-    setVariablesFromURL();
-    switchView(view);
-    loadMainPathway();
-  });
-
+    $(document).ready( function() {
+	setupBootSideMenu();
+	accordionLeverToggle();
+	checkSVGWorks();
+	setUpControls();
+	setVariablesFromURL();
+	switchView(view);
+	loadMainPathway();
+    });
+    
+    accordionLeverToggle = function() {
+	$('#accordion').find('.accordion-toggle').click(function(){
+	//Expand or collapse this panel
+	$(this).next().slideToggle('fast');
+	});
+    }
+	
+							
+    setupBootSideMenu = function() {
+	$('#lever_nav_panel').BootSideMenu({
+	    side: "left",
+	    width: "350px"	    
+	});
+    }
+							
+    
   // Some of the graphs require SVG, which is only supported in modern browsers (Internet Explorer >8)
   // This function checks that SVG is supported, and if not reveals a warning block that is 
   // in src/index.html.erb
@@ -58,7 +76,15 @@
       l = t.data().choicelevel;
       go(c, l);
     });
-
+      
+      $("a.leverNameLink").html(function(index, leverName) {
+	  truncated = leverName.trim().substring(0, 25);
+	  if (truncated.length < leverName.trim().length) {
+	      truncated += "..." 
+	  }
+	  return truncated;
+    });
+      
     $("a.view").on('click touchend', function(event) {
       var t, v;
       event.preventDefault();
@@ -66,6 +92,7 @@
       v = t.data().view;
       return switchView(v);
     });
+      
 
     $(".newdropdown").on('click touchend', function(event) {
       var d, o, space, t;
@@ -86,6 +113,18 @@
       }
     });
 
+//      $("#classic_controls table tr").on('mouseover', function() {
+//	  $(this).find("a.choiceLink").css("color","#000");
+//	  $(this).find("td.choice2").css("display","block");
+//	  });
+//
+//      $("#classic_controls table tr").on('mouseout', function() {
+//	  $(this).find("a.choiceLink").css("color","#FFF");
+//	  $(this).find("td.choice2").css("display","none");
+//	  });
+//     
+//	  
+	  
     // This triggers the interface to loop through levels 1 to 4
     // when the user hovers their mouse over a choice.
     d3.selectAll('td.name a')
@@ -106,6 +145,7 @@
         active_view.updateResults(cache[codeForChoices()]);
       }, 500);
     });
+      
   };
 
   setVariablesFromURL = function() {
