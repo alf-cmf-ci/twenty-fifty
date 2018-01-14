@@ -8,10 +8,8 @@ jobs:
       - run: 
           command: |
             echo "Running test"
-            echo `ls -als`
             sudo gem install bundler --no-ri --no-rdoc
-            echo "bundler installed"
-            cd twenty-fifty
+            echo "bundler installed
             echo "Installing ruby dependencies"
             bundle
             echo "ruby deps installed"
