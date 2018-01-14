@@ -15,7 +15,7 @@ jobs:
             echo "ruby deps installed"
             cd model
             echo "Compiling c lib"
-            ruby compile_c_version_of_excel.rb
+            ruby compile_c_version_if_needed.rb
             echo "c lib compiled"
             cd ../
             bundle exec rackup
