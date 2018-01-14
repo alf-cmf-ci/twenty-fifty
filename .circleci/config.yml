@@ -9,7 +9,7 @@ jobs:
           command: |
             echo "Running test"
             sudo gem install bundler --no-ri --no-rdoc
-            echo "bundler installed
+            echo "bundler installed"
             echo "Installing ruby dependencies"
             bundle
             echo "ruby deps installed"
