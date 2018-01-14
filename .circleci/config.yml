@@ -2,7 +2,21 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4.1
+      - image: circleci/ruby:2.1.10-node-browsers
     steps:
       - checkout
-      - run: echo "A first hello"
+      - run: 
+          command: |
+            echo "Running test"
+            sudo gem install bundler --no-ri --no-rdoc
+            echo "bundler installed"
+            cd twenty-fifty
+            echo "Installing ruby dependencies"
+            bundle
+            echo "ruby deps installed"
+            cd model
+            echo "Compiling c lib"
+            ruby compile_c_version_of_excel.rb
+            echo "c lib compiled"
+            cd ../
+            bundle exec rackup
