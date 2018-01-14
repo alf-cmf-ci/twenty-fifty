@@ -8,6 +8,7 @@ jobs:
       - run: 
           command: |
             echo "Running test"
+            echo `ls -als`
             sudo gem install bundler --no-ri --no-rdoc
             echo "bundler installed"
             cd twenty-fifty
